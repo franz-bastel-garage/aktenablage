@@ -1,0 +1,50 @@
+# Claude-Fork-Modell (siehe Privat/LIESMICH.md, "Claude ohne PC").
+# Laeuft nur im Fork franz-claude/<repo> (im Original franz-bastel-garage/<repo>
+# liegt die Datei nur, damit Pull Requests sie nicht als Aenderung zeigen).
+#
+# Push auf sync      -> main im Fork auf den Stand des Originals bringen
+# Push auf claude/*  -> Fork nachziehen, dann Pull Request im Original oeffnen
+#
+# Secret CLAUDE_TOKEN im Fork: Token des Zweitkontos franz-claude
+# (Scopes repo + workflow). Das Zweitkonto hat im Original nur Leserecht.
+
+name: Claude-Fork
+
+on:
+  push:
+    branches:
+      - sync
+      - 'claude/**'
+
+permissions:
+  contents: read
+
+env:
+  GH_TOKEN: ${{ secrets.CLAUDE_TOKEN }}
+  FORK: ${{ github.repository }}
+  UPSTREAM: franz-bastel-garage/${{ github.event.repository.name }}
+
+jobs:
+  claude-fork:
+    if: github.repository_owner == 'franz-claude'
+    runs-on: ubuntu-latest
+    steps:
+      - name: main im Fork auf den Stand des Originals bringen
+        run: |
+          gh api -X POST "repos/$FORK/merge-upstream" -f branch=main --jq '.message'
+
+      - name: Pull Request im Original oeffnen, falls noch keiner offen ist
+        if: startsWith(github.ref, 'refs/heads/claude/')
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          offen=$(gh api "repos/$UPSTREAM/pulls?state=open&head=franz-claude:$BRANCH" --jq 'length')
+          if [ "$offen" != "0" ]; then
+            echo "PR fuer $BRANCH ist schon offen."
+            exit 0
+          fi
+          titel=$(gh api "repos/$FORK/commits/${{ github.sha }}" --jq '.commit.message | split("\n")[0]')
+          thema=${BRANCH#claude/}
+          gh pr create --repo "$UPSTREAM" --base main --head "franz-claude:$BRANCH" \
+            --title "${titel:-$thema}" \
+            --body "Von Claude aus dem Fork \`franz-claude\` (Zweig \`$BRANCH\`)."
