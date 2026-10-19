@@ -38,7 +38,7 @@ jobs:
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
-          offen=$(gh pr list --repo "$UPSTREAM" --head "franz-claude:$BRANCH" --state open --json number --jq 'length')
+          offen=$(gh api "repos/$UPSTREAM/pulls?state=open&head=franz-claude:$BRANCH" --jq 'length')
           if [ "$offen" != "0" ]; then
             echo "PR fuer $BRANCH ist schon offen."
             exit 0
