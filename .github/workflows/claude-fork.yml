@@ -47,4 +47,4 @@ jobs:
           thema=${BRANCH#claude/}
           gh pr create --repo "$UPSTREAM" --base main --head "franz-claude:$BRANCH" \
             --title "${titel:-$thema}" \
-            --body "Von Claude aus dem Fork \`franz-claude\` (Zweig \`$BRANCH\`)."
+            --body "@FranzConsbruch -- von Claude aus dem Fork \`franz-claude\` (Zweig \`$BRANCH\`)."
