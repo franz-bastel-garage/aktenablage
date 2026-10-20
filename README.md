@@ -7,7 +7,7 @@ Kein Server, keine Datenbank, kein Hintergrunddienst: reine statische Dateien, a
 im Moment des Klicks.
 
 **Anhang aus Akte** ist das zweite, bewusst getrennte Add-in (eigenes Manifest
-`manifest-anhang.xml`, eigene App-Id, gleiche Code-Basis): Beim Verfassen einer Mail hängt es
+`manifest-anhang-aus-akte.xml`, eigene App-Id, gleiche Code-Basis): Beim Verfassen einer Mail hängt es
 Dateien direkt aus der Dropbox-Akte an. Getrennt deshalb, damit beide unabhängig voneinander
 hochgeladen und aktualisiert werden können — ein Update des einen kann das andere nie stören.
 
@@ -43,18 +43,21 @@ Exakt so, inklusive Dateiname. Im selben Reiter unter *Permissions* müssen gese
 mit **Submit** gespeichert sein: `files.metadata.read`, `files.metadata.write`,
 `files.content.read`, `files.content.write`.
 
-**3. Manifest anpassen — bereits erledigt**
+**3. Manifeste anpassen — bereits erledigt**
 
-In `manifest.xml` stehen die Adressen schon drin
+Es gibt genau zwei Manifeste, eins je Add-in:
+`manifest-in-akte-ablegen.xml` und `manifest-anhang-aus-akte.xml`. In beiden stehen die Adressen schon drin
 (`https://franz-bastel-garage.github.io/aktenablage`). Nichts zu tun.
 
 **4. Add-in bereitstellen**
 
 Über das Admin Center (empfohlen, und der Weg für weitere Nutzer):
 **admin.microsoft.com → Einstellungen → Integrierte Apps → Benutzerdefinierte Apps hochladen**
-→ *Office-Add-In* → `manifest.xml`. Danach beim Zuweisen die gewünschten Benutzer wählen.
-Für das zweite Add-in denselben Weg noch einmal mit `manifest-anhang.xml` gehen — es wird
+→ *Office-Add-In* → `manifest-in-akte-ablegen.xml`. Danach beim Zuweisen die gewünschten Benutzer wählen.
+Für das zweite Add-in denselben Weg noch einmal mit `manifest-anhang-aus-akte.xml` gehen — es wird
 ein eigener Eintrag in der App-Liste.
+Vorhandene Add-ins erkennt das Admin Center an der App-Id (nicht am Dateinamen) – dort
+*Aktualisieren* wählen und vorher `<Version>` im Manifest erhöhen.
 Die Bereitstellung braucht bis zu 24 Stunden, meist 15 bis 60 Minuten.
 
 Alternativ als Endnutzer: eine Mail öffnen → **Apps** in der Nachrichten-Symbolleiste →
@@ -80,15 +83,16 @@ Beim allerersten Push fragt Git nach der GitHub-Anmeldung — im Browser bestät
 `push.cmd` noch einmal starten. GitHub Pages übernimmt die Änderung nach ein bis zwei Minuten;
 danach im Outlook das Panel schließen und neu öffnen.
 
-**Wichtig:** Änderungen an den Manifesten (`manifest.xml`, `manifest-anhang.xml`) wirken
+**Wichtig:** Änderungen an den Manifesten (`manifest-in-akte-ablegen.xml`, `manifest-anhang-aus-akte.xml`) wirken
 **nicht** über Pages. Ein geändertes Manifest muss im Admin Center unter *Integrierte Apps*
 neu hochgeladen werden — und dort auch nur, wenn es sich tatsächlich geändert hat.
 
 **Gelernt am 15.10.2026:** Das Admin Center lehnt Manifeste mit allein stehendem
 `VersionOverrides V1_1` inzwischen kommentarlos ab („Fehler beim Hochladen“) – im September
-ging dieselbe Form noch durch. `manifest-anhang.xml` nutzt deshalb V1_0. Vor dem nächsten
-Update von `manifest.xml`: dessen V1_1-Teil (Anheften) zuerst in die verschachtelte Form
-bringen (V1_0 außen, V1_1 innen). Änderungen an HTML, JS und Symbolen brauchen nur den Push.
+ging dieselbe Form noch durch. `manifest-anhang-aus-akte.xml` nutzt deshalb V1_0,
+`manifest-in-akte-ablegen.xml` die verschachtelte Form (V1_0 außen, V1_1 mit Anheften innen).
+Beide so am 20.10.2026 erfolgreich aktualisiert. Die alten Dateien `manifest.xml` (allein
+stehendes V1_1) und `manifest-test-ablage.xml` sind seitdem gelöscht. Änderungen an HTML, JS und Symbolen brauchen nur den Push.
 
 ## Anhang aus Akte — zweites Add-in (Verfassen-Modus)
 
@@ -113,8 +117,8 @@ Server die neue Adresse (HTTPS zwingend) zusätzlich eintragen.
 
 | Datei | Zweck |
 |---|---|
-| `manifest.xml` | Manifest **In Akte ablegen** (Lesemodus) |
-| `manifest-anhang.xml` | Manifest **Anhang aus Akte** (Verfassen-Modus), eigene App-Id |
+| `manifest-in-akte-ablegen.xml` | Manifest **In Akte ablegen** (Lesemodus) |
+| `manifest-anhang-aus-akte.xml` | Manifest **Anhang aus Akte** (Verfassen-Modus), eigene App-Id |
 | `taskpane.html` | Oberfläche: Aktenwahl, Ablegen, Anhang aus Akte |
 | `taskpane.js` | Ablauf: MIME holen, hochladen, Anhänge, Kategorie, Vermerk an der Mail |
 | `dropbox.js` | Dropbox: Anmeldung mit PKCE, Ordnerliste, Upload |

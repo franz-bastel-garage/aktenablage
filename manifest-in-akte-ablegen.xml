@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+  Add-in "In Akte ablegen" (Lesemodus). Hochladen im Admin Center unter
+  Integrierte Apps, gleiche App-Id -> "Aktualisieren", Version vorher erhoehen.
+  Verschachtelte Form: VersionOverrides V1_0 aussen, V1_1 (Anheften) innen --
+  allein stehendes V1_1 lehnt das Admin Center seit Oktober 2026 ab.
   Adressen eingetragen für https://franz-bastel-garage.github.io/aktenablage
   Es ist nichts mehr zu ersetzen. Ändert sich die Adresse, alle Vorkommen anpassen.
 -->
