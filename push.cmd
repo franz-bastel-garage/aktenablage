@@ -14,7 +14,7 @@ if not exist ".git" (
   echo Erste Einrichtung: lokales Repository wird angelegt...
   git init
   git branch -M main
-  git remote add origin https://github.com/FranzConsbruch/aktenablage.git
+  git remote add origin https://github.com/franz-bastel-garage/aktenablage.git
   echo Stand von GitHub holen...
   git fetch origin
   git rev-parse --verify origin/main >nul 2>&1

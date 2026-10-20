@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Adressen eingetragen für https://franzconsbruch.github.io/aktenablage
+  Adressen eingetragen für https://franz-bastel-garage.github.io/aktenablage
   Es ist nichts mehr zu ersetzen. Ändert sich die Adresse, alle Vorkommen anpassen.
 -->
 <OfficeApp
@@ -11,14 +11,14 @@
   xsi:type="MailApp">
 
   <Id>1a2f27c9-8e61-4dc9-a80b-dc78a1f714f5</Id>
-  <Version>1.0.2.0</Version>
+  <Version>1.0.3.0</Version>
   <ProviderName>von Consbruch</ProviderName>
   <DefaultLocale>de-DE</DefaultLocale>
   <DisplayName DefaultValue="In Akte ablegen"/>
   <Description DefaultValue="Legt die markierte Mail als .eml samt Anhängen in der gewählten Dropbox-Akte ab und markiert sie mit der Kategorie Abgelegt."/>
-  <IconUrl DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-128.png"/>
-  <SupportUrl DefaultValue="https://franzconsbruch.github.io/aktenablage/"/>
+  <IconUrl DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://franz-bastel-garage.github.io/aktenablage/"/>
 
   <AppDomains>
     <AppDomain>https://www.dropbox.com</AppDomain>
@@ -38,7 +38,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://franzconsbruch.github.io/aktenablage/taskpane.html"/>
+        <SourceLocation DefaultValue="https://franz-bastel-garage.github.io/aktenablage/taskpane.html"/>
         <RequestedHeight>420</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -91,12 +91,12 @@
 
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-16.png"/>
-        <bt:Image id="icon32" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-32.png"/>
-        <bt:Image id="icon80" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-80.png"/>
+        <bt:Image id="icon16" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="taskpaneUrl" DefaultValue="https://franzconsbruch.github.io/aktenablage/taskpane.html"/>
+        <bt:Url id="taskpaneUrl" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="grpLabel" DefaultValue="Akte"/>
@@ -146,12 +146,12 @@
 
       <Resources>
         <bt:Images>
-          <bt:Image id="icon16" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-16.png"/>
-          <bt:Image id="icon32" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-32.png"/>
-          <bt:Image id="icon80" DefaultValue="https://franzconsbruch.github.io/aktenablage/assets/icon-80.png"/>
+          <bt:Image id="icon16" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-16.png"/>
+          <bt:Image id="icon32" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-32.png"/>
+          <bt:Image id="icon80" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="taskpaneUrl" DefaultValue="https://franzconsbruch.github.io/aktenablage/taskpane.html"/>
+          <bt:Url id="taskpaneUrl" DefaultValue="https://franz-bastel-garage.github.io/aktenablage/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="grpLabel" DefaultValue="Akte"/>

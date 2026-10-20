@@ -21,27 +21,32 @@ hochgeladen und aktualisiert werden können — ein Update des einen kann das an
 
 **1. Repository und GitHub Pages**
 
-Diese Dateien in das Repository `FranzConsbruch/aktenablage` legen, dann unter
+Diese Dateien in das Repository `franz-bastel-garage/aktenablage` legen (öffentlich, mit Absicht – sonst kein kostenloses Pages), dann unter
 *Settings → Pages* die Quelle auf den Branch `main`, Ordner `/` stellen.
 Nach ein bis zwei Minuten ist alles erreichbar unter
-`https://franzconsbruch.github.io/aktenablage/`.
+`https://franz-bastel-garage.github.io/aktenablage/` (die `index.html` leitet auf `akte.html` weiter).
+
+**Umzug 19.10.2026:** Das Repo lag vorher unter `FranzConsbruch/aktenablage`. Die alte
+Pages-Adresse `franzconsbruch.github.io/aktenablage` leitet **nicht** um – Manifeste neu
+hochladen und die neuen Redirect-URIs in der Dropbox-App eintragen (siehe 2.).
 
 **2. Redirect URI in der Dropbox-App eintragen**
 
 Unter *dropbox.com/developers/apps → deine App → Settings → OAuth 2 → Redirect URIs*:
 
 ```
-https://franzconsbruch.github.io/aktenablage/auth.html
+https://franz-bastel-garage.github.io/aktenablage/auth.html
+https://franz-bastel-garage.github.io/aktenablage/akte.html
 ```
 
-Exakt so, inklusive `auth.html`. Im selben Reiter unter *Permissions* müssen gesetzt und
+Exakt so, inklusive Dateiname. Im selben Reiter unter *Permissions* müssen gesetzt und
 mit **Submit** gespeichert sein: `files.metadata.read`, `files.metadata.write`,
 `files.content.read`, `files.content.write`.
 
 **3. Manifest anpassen — bereits erledigt**
 
 In `manifest.xml` stehen die Adressen schon drin
-(`https://franzconsbruch.github.io/aktenablage`). Nichts zu tun.
+(`https://franz-bastel-garage.github.io/aktenablage`). Nichts zu tun.
 
 **4. Add-in bereitstellen**
 
@@ -67,7 +72,7 @@ Die Anmeldung läuft einmalig; danach hält sie über das Refresh-Token.
 ## Änderungen veröffentlichen
 
 Im Projektordner liegt **`push.cmd`**. Doppelklick genügt: Beim ersten Lauf legt es das lokale
-Repository an, verbindet es mit `github.com/FranzConsbruch/aktenablage` und übernimmt die
+Repository an, verbindet es mit `github.com/franz-bastel-garage/aktenablage` und übernimmt die
 vorhandene Historie; danach committet und pusht es alles Geänderte. Für eine eigene
 Commit-Nachricht in der Eingabeaufforderung `push.cmd "Was geaendert wurde"` aufrufen.
 
@@ -77,7 +82,13 @@ danach im Outlook das Panel schließen und neu öffnen.
 
 **Wichtig:** Änderungen an den Manifesten (`manifest.xml`, `manifest-anhang.xml`) wirken
 **nicht** über Pages. Ein geändertes Manifest muss im Admin Center unter *Integrierte Apps*
-neu hochgeladen werden — und dort auch nur, wenn es sich tatsächlich geändert hat. Änderungen an HTML, JS und Symbolen brauchen nur den Push.
+neu hochgeladen werden — und dort auch nur, wenn es sich tatsächlich geändert hat.
+
+**Gelernt am 15.10.2026:** Das Admin Center lehnt Manifeste mit allein stehendem
+`VersionOverrides V1_1` inzwischen kommentarlos ab („Fehler beim Hochladen“) – im September
+ging dieselbe Form noch durch. `manifest-anhang.xml` nutzt deshalb V1_0. Vor dem nächsten
+Update von `manifest.xml`: dessen V1_1-Teil (Anheften) zuerst in die verschachtelte Form
+bringen (V1_0 außen, V1_1 innen). Änderungen an HTML, JS und Symbolen brauchen nur den Push.
 
 ## Anhang aus Akte — zweites Add-in (Verfassen-Modus)
 
@@ -95,7 +106,7 @@ landet im Aktenordner und wird heruntergeladen).
 
 Jede Person meldet sich mit ihrem eigenen Dropbox-Konto an. Voraussetzung: Die Adresse der
 Seite ist in der Dropbox-App als Redirect-URI eingetragen, z. B.
-`https://franzconsbruch.github.io/aktenablage/akte.html` – beim Umzug auf einen eigenen
+`https://franz-bastel-garage.github.io/aktenablage/akte.html` – beim Umzug auf einen eigenen
 Server die neue Adresse (HTTPS zwingend) zusätzlich eintragen.
 
 ## Dateien
